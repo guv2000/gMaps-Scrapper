@@ -1,20 +1,20 @@
 # gMaps-Scrapper
 
-> **Not:** Google Maps kullanım şartları otomatik erişimi kısıtlayabilir. Bu aracı sorumlu şekilde ve yürürlükteki yasa/politikalara uygun olarak kullanın.
+> **Note:** Google Maps has Terms of Service that may restrict automated access. Use this project responsibly and comply with all applicable laws and policies.
 
-## Bu proje ne yapıyor?
-Bu repo, **Python + Playwright** ile çalışan bir komut satırı aracı sağlar:
-- Program çalışınca sana soru sorar: `şehir` ve `aranacak kelime` (ör. `fethiye` + `berber`).
-- Google Maps sonuç listesini aşağı kaydırarak tüm firmaları yüklemeye çalışır.
-- Her firma kartına girip detayları toplar.
-- Uygunsa **tüm yorumları** ve **fotoğraf linklerini** çıkarır.
-- Sonuçları CSV olarak kaydeder.
+## Overview
+This repository provides a **Python + Playwright** CLI tool that:
+- Prompts for search terms (e.g., `fethiye` + `berber`).
+- Scrolls the left-hand results list to load all businesses.
+- Visits each business card and captures available details.
+- Optionally collects **all reviews** and **photo URLs**.
+- Exports data to CSV files.
 
-## Gereksinimler
+## Requirements
 - Python 3.10+
-- Playwright tarayıcıları (Chromium)
+- Playwright browsers installed
 
-## Kurulum
+## Setup
 ```bash
 python -m venv .venv
 source .venv/bin/activate
@@ -22,21 +22,21 @@ pip install -r requirements.txt
 python -m playwright install
 ```
 
-## Çalıştırma
+## Usage
 ```bash
 python gmaps_scraper.py
 ```
-Program sırasıyla şunları sorar:
-- **Şehir/Bölge**: (ör. `fethiye`)
-- **Arama kelimesi**: (ör. `berber`)
-- **Çıktı klasörü**: (varsayılan `output`)
+You will be prompted for:
+- Location (e.g., `fethiye`)
+- Query (e.g., `berber`)
+- Output directory (defaults to `output`)
 
-Çıktılar:
-- `output/businesses.csv`
-- `output/reviews.csv`
-- `output/photos.csv`
+Outputs:
+- `businesses.csv`
+- `reviews.csv`
+- `photos.csv`
 
-## CSV Kolonları
+## CSV Columns
 ### `businesses.csv`
 - `business_id`, `name`, `address`, `phone`, `website`, `category`, `rating`, `review_count`, `hours`, `lat`, `lng`, `source_url`, `fetched_at`
 
@@ -46,27 +46,10 @@ Program sırasıyla şunları sorar:
 ### `photos.csv`
 - `business_id`, `photo_url`
 
-## Hızlı Test (elle)
-1. Komutu çalıştır: `python gmaps_scraper.py`
-2. Örnek giriş ver:
-   - Şehir/Bölge: `fethiye`
-   - Arama kelimesi: `berber`
-3. Tarayıcı açılacak ve sonuçlar toplanacak.
-4. İş bitince `output/` klasöründeki CSV dosyalarını kontrol et.
+## Tips to Reduce Blocks
+- Run in **headed** mode (default).
+- Keep your search volume modest.
+- Avoid rapid, high-parallel scraping.
 
-## GitHub'a Yayınlama (kendi repo’n)
-1. GitHub’da repo oluştur (boş repo).
-2. Bu klasörde sırasıyla çalıştır:
-```bash
-git remote add origin https://github.com/KULLANICI_ADIN/REPO_ADI.git
-git push -u origin main
-```
-> Eğer dal adı `main` değilse, `git branch` ile kontrol edip uygun dal adını yaz.
-
-## Ban riskini azaltmak için ipuçları
-- Headed (görünür) mod zaten açık.
-- Çok hızlı/çok paralel çekimden kaçın.
-- Kısa aralıklarla ve makul hacimde çalıştır.
-
-## Sorumluluk
-Bu araç, meşru veri toplama amaçları içindir. Rehber siten için veriyi kullanma hakkın olduğundan emin ol.
+## Disclaimer
+This tool is intended for legitimate data collection. Ensure you have the right to collect and use the data for your directory.
