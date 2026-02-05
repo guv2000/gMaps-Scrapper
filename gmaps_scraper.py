@@ -242,9 +242,9 @@ def write_csv(path: str, rows: list, headers: list[str]) -> None:
 
 
 def run() -> None:
-    location = prompt("Şehir/Bölge (ör. fethiye)")
-    query = prompt("Arama kelimesi (ör. berber)")
-    output_dir = prompt("Çıktı klasörü", default="output")
+    location = prompt("Location (e.g., fethiye)")
+    query = prompt("Query (e.g., berber)")
+    output_dir = prompt("Output directory", default="output")
 
     ensure_dir(output_dir)
     search_text = f"{query} {location}".strip()
